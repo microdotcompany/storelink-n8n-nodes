@@ -74,7 +74,7 @@ Built with `@n8n/node-cli` 0.55.5 against n8n 2.x.
 
 ## Usage
 
-- **Triggers need n8n at a public https URL.** n8n Cloud works as it is. A self-hosted n8n needs a public https webhook URL (n8n's `WEBHOOK_URL` setting). Storelink refuses `localhost` and private addresses, so a trigger on `http://localhost:5678` fails to activate and n8n shows Storelink's message. The Storelink node works from any n8n.
+- **Triggers need n8n at a public https URL.** n8n Cloud works as it is. A self-hosted n8n needs a public https webhook URL (n8n's `N8N_WEBHOOK_URL` setting, or `WEBHOOK_URL` before n8n 2.35). Storelink refuses `localhost` and private addresses, so a trigger on `http://localhost:5678` fails to activate and n8n shows Storelink's message. The Storelink node works from any n8n.
 - **To test a trigger,** click **Listen for test event**, then place an order, change an order's status, or add a customer in Storelink.
 - **Deliveries are signed.** The trigger checks each delivery's signature and rejects anything Storelink didn't send.
 - **Customer Get Many filters are ANDed.** A customer must match every filter you set, so map either the email or the phone, not both. To try the other one when the first finds no one, add a second Get Many behind an If node.
