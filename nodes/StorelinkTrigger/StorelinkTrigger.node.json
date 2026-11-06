@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-storelink.storelinkTrigger",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Sales"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/microdotcompany/n8n-nodes-storelink#credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/microdotcompany/n8n-nodes-storelink#readme"
+			}
+		]
+	}
+}
