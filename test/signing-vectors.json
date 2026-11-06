@@ -1,0 +1,46 @@
+{
+	"v": 1,
+	"scheme": "Standard Webhooks v1: base64(HMAC-SHA256(base64decode(secret without whsec_), `${id}.${timestamp}.${body}`))",
+	"generatedWith": "standardwebhooks@1.1.1",
+	"vectors": [
+		{
+			"name": "hook-order-status-changed",
+			"secret": "whsec_QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl8=",
+			"id": "evt_01JC8V5Q6T2Z3M4N5P6R7S8T9V_hook_3f9c1a7e5b2d4c6e8a0b1c2d3e4f5a6b",
+			"timestamp": 1793528105,
+			"body": "{\"id\":\"evt_01JC8V5Q6T2Z3M4N5P6R7S8T9V\",\"type\":\"order.status_changed\",\"created_at\":\"2026-11-01T10:15:00.000Z\",\"store_id\":\"6403015fb9de96fc86f364ad\",\"source\":\"zapier\",\"data\":{\"order_id\":\"6724a1f0c2b5e8a1d4f3b2c1\",\"number\":1042,\"status\":\"shipped\",\"total\":59.5},\"previous\":{\"status\":\"pending\"}}",
+			"signature": "v1,sXFMAy4mPTL3PgW7KRFQ9YhLv7AtRrvS79ACS3ogBxI=",
+			"headers": {
+				"webhook-id": "evt_01JC8V5Q6T2Z3M4N5P6R7S8T9V_hook_3f9c1a7e5b2d4c6e8a0b1c2d3e4f5a6b",
+				"webhook-timestamp": "1793528105",
+				"webhook-signature": "v1,sXFMAy4mPTL3PgW7KRFQ9YhLv7AtRrvS79ACS3ogBxI="
+			}
+		},
+		{
+			"name": "hook-customer-created-unicode",
+			"secret": "whsec_QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl8=",
+			"id": "evt_01JC8V7B2K9M4N6P8R0S2T4V6X_hook_9a8b7c6d5e4f30211203f4e5d6c7b8a9",
+			"timestamp": 1793528105,
+			"body": "{\"id\":\"evt_01JC8V7B2K9M4N6P8R0S2T4V6X\",\"type\":\"customer.created\",\"created_at\":\"2026-11-01T10:15:00.000Z\",\"store_id\":\"6403015fb9de96fc86f364ad\",\"source\":\"zapier\",\"data\":{\"customer_id\":\"6724a2c9c2b5e8a1d4f3b2d7\",\"name\":\"Zoë Ångström 李雷 🚚\"},\"previous\":null}",
+			"signature": "v1,IzEW0xoKLl0YEhCLzeSTy8mpKlI7p2G3Rx1NYCo6Ei0=",
+			"headers": {
+				"webhook-id": "evt_01JC8V7B2K9M4N6P8R0S2T4V6X_hook_9a8b7c6d5e4f30211203f4e5d6c7b8a9",
+				"webhook-timestamp": "1793528105",
+				"webhook-signature": "v1,IzEW0xoKLl0YEhCLzeSTy8mpKlI7p2G3Rx1NYCo6Ei0="
+			}
+		},
+		{
+			"name": "standard-webhooks-reference",
+			"secret": "whsec_MfKQ9r8GKYqrTwjUPD8ILPZIo2LaLaSw",
+			"id": "msg_p5jXN8AQM9LWM0D4loKWxJek",
+			"timestamp": 1614265330,
+			"body": "{\"test\": 2432232314}",
+			"signature": "v1,g0hM9SsE+OTPJTGt/tmIKtSyZlE3uFJELVlNIOLJ1OE=",
+			"headers": {
+				"webhook-id": "msg_p5jXN8AQM9LWM0D4loKWxJek",
+				"webhook-timestamp": "1614265330",
+				"webhook-signature": "v1,g0hM9SsE+OTPJTGt/tmIKtSyZlE3uFJELVlNIOLJ1OE="
+			}
+		}
+	]
+}
