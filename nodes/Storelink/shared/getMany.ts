@@ -15,6 +15,9 @@ export async function paginateByCursor(
 ): Promise<INodeExecutionData[]> {
 	const returnAll = this.getNodeParameter('returnAll', false) as boolean;
 	const limit = returnAll ? Infinity : (this.getNodeParameter('limit', 50) as number);
+	// Products page by number, with the offset taken from the page size, so the size can't change
+	// between pages. The last page may overshoot Limit, and the surplus is dropped.
+	const pageSize = Math.min(PAGE_SIZE, limit);
 	const items: INodeExecutionData[] = [];
 	let cursor: string | null = null;
 
@@ -23,11 +26,7 @@ export async function paginateByCursor(
 			...requestData,
 			options: {
 				...requestData.options,
-				qs: {
-					...requestData.options.qs,
-					limit: Math.min(PAGE_SIZE, limit - items.length),
-					...(cursor && { cursor }),
-				},
+				qs: { ...requestData.options.qs, limit: pageSize, ...(cursor && { cursor }) },
 			},
 		});
 		const page = json as unknown as ListPage;
@@ -35,7 +34,7 @@ export async function paginateByCursor(
 		cursor = page.next_cursor;
 	} while (cursor && items.length < limit);
 
-	return items;
+	return items.slice(0, limit);
 }
 
 export const getManyFields = (resource: string): INodeProperties[] => [

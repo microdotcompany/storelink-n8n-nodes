@@ -97,3 +97,15 @@ jobs:
           npm run release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Scan the published package
+        # n8n's verification scanner checks a published version: its provenance attestation, the
+        # attested commit on GitHub, and the npm tarball. It can't run before publishing, so
+        # `npm run lint` applies the same rules in CI and in the release. Retries cover npm's delay
+        # in serving a version it has just accepted.
+        run: |
+          for attempt in 1 2 3 4 5; do
+            npx --yes @n8n/scan-community-package@0.42.0 "n8n-nodes-storelink@${GITHUB_REF_NAME}" && exit 0
+            sleep 30
+          done
+          exit 1

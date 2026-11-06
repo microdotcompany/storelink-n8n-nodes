@@ -51,17 +51,43 @@ describe('paginateByCursor', () => {
 		]);
 	});
 
-	test('asks for only what Limit still needs, and stops at it', async () => {
+	test('keeps one page size across pages and trims the last page to Limit', async () => {
 		const { items, queries } = await paginate({ returnAll: false, limit: 70 }, [
 			{ data: orders(50), next_cursor: 'c1' },
-			{ data: orders(20, 50), next_cursor: 'c2' },
+			{ data: orders(50, 50), next_cursor: 'c2' },
 		]);
 
-		expect(items).toHaveLength(70);
+		expect(items.map(({ json }) => json.number)).toEqual(orders(70).map(({ number }) => number));
 		expect(queries).toEqual([
 			{ status: 'pending', limit: 50 },
-			{ status: 'pending', limit: 20, cursor: 'c1' },
+			{ status: 'pending', limit: 50, cursor: 'c1' },
 		]);
+	});
+
+	test('gets each product once from page-number cursors, whose offset is page x limit', async () => {
+		const catalog = orders(120);
+		const makeRoutingRequest = vi.fn(async (request: DeclarativeRestApiSettings.ResultOptions) => {
+			const { limit, cursor } = request.options.qs as { limit: number; cursor?: string };
+			const page = cursor ? Number(cursor) : 1;
+			const data = catalog.slice((page - 1) * limit, page * limit);
+			const more = page * limit < catalog.length;
+			return [
+				{ json: { data, next_cursor: more ? String(page + 1) : null } as unknown as IDataObject },
+			];
+		});
+		const context = {
+			getNodeParameter: (name: string, fallback: unknown) => (name === 'limit' ? 70 : fallback),
+			makeRoutingRequest,
+		} as unknown as IExecutePaginationFunctions;
+		const requestData = {
+			options: { method: 'GET', url: '/products', qs: {} },
+		} as unknown as DeclarativeRestApiSettings.ResultOptions;
+
+		const items = await paginateByCursor.call(context, requestData);
+
+		expect(items.map(({ json }) => json.number)).toEqual(
+			catalog.slice(0, 70).map(({ number }) => number),
+		);
 	});
 
 	test('makes one request when Limit fits in a page', async () => {
