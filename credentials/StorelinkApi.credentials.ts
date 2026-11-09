@@ -13,7 +13,7 @@ export class StorelinkApi implements ICredentialType {
 
 	icon: Icon = { light: 'file:../icons/storelink.svg', dark: 'file:../icons/storelink.svg' };
 
-	documentationUrl = 'https://github.com/microdotcompany/n8n-nodes-storelink#credentials';
+	documentationUrl = 'https://github.com/microdotcompany/storelink-n8n-nodes#credentials';
 
 	properties: INodeProperties[] = [
 		{

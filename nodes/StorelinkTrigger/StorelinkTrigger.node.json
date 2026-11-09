@@ -6,12 +6,12 @@
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://github.com/microdotcompany/n8n-nodes-storelink#credentials"
+				"url": "https://github.com/microdotcompany/storelink-n8n-nodes#credentials"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://github.com/microdotcompany/n8n-nodes-storelink#readme"
+				"url": "https://github.com/microdotcompany/storelink-n8n-nodes#readme"
 			}
 		]
 	}
