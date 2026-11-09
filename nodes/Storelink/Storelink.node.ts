@@ -10,7 +10,7 @@ export class Storelink implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Storelink',
 		name: 'storelink',
-		icon: { light: 'file:../../icons/storelink.svg', dark: 'file:../../icons/storelink.dark.svg' },
+		icon: { light: 'file:../../icons/storelink.svg', dark: 'file:../../icons/storelink.svg' },
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',

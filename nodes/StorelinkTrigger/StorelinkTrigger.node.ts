@@ -17,7 +17,7 @@ export class StorelinkTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Storelink Trigger',
 		name: 'storelinkTrigger',
-		icon: { light: 'file:../../icons/storelink.svg', dark: 'file:../../icons/storelink.dark.svg' },
+		icon: { light: 'file:../../icons/storelink.svg', dark: 'file:../../icons/storelink.svg' },
 		group: ['trigger'],
 		version: 1,
 		subtitle: '={{$parameter["event"]}}',

@@ -11,7 +11,7 @@ export class StorelinkApi implements ICredentialType {
 
 	displayName = 'Storelink API';
 
-	icon: Icon = { light: 'file:../icons/storelink.svg', dark: 'file:../icons/storelink.dark.svg' };
+	icon: Icon = { light: 'file:../icons/storelink.svg', dark: 'file:../icons/storelink.svg' };
 
 	documentationUrl = 'https://github.com/microdotcompany/n8n-nodes-storelink#credentials';
 
